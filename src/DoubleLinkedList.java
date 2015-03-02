@@ -12,14 +12,17 @@ public class DoubleLinkedList<T> implements LinkedList<T>{
     private int size = 0;
 
     private Node<T> first;
+    
+    private Node<T> last;
 
     @Override
     public boolean add(T element){
-        final Node<T> newNode = new Node(first, element, null);
-        if (first == null){
+        final Node<T> l = last;
+        final Node<T> newNode = new Node(last, element, null);
+        if (last == null){
             first = newNode;
         } else {
-            first.next = newNode;
+            last.next = newNode;
         }
         size++;
         return true;
